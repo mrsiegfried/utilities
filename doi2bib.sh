@@ -7,9 +7,14 @@
 ##      * for some reason, data.crossref.org goes down a lot. If that happens, just try, try again
 ##      * if there are special characters in the first author's last name, the citation key gets garbled; fix by hand for now
 ##      * if you keep doi2bib.py in a different folder, point to it with the pyhome variable
+##      * of course always double check the output for special characters, etc. Crossref is not infallible!
 
-#pyhome="$CODEHOME/py/util" #variable for where you keep the doi2bib.py file
-pyhome='./'
+# set where you keep the doi2bib.py file
+# we're going to assume doi2bib.sh is in your path
+# and you have doi2bib.py in the same folder as doi2bib.sh.
+# You can put doi2bib.py where ever you want, but you need to change
+# the pyhome variable
+pyhome=`which doi2bib.sh | xargs dirname`
 
 if [[ $# -gt 2 || $# -lt 1 ]]; then
     echo "ERROR: `basename $0` requires 1 or 2 inputs"
